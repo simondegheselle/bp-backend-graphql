@@ -145,6 +145,8 @@ class Articles {
         article.tagList = args.data.tagList
       }
 
+      article.author = user;
+
       const newArticle = article.save();
 
       if (!newArticle) {
@@ -210,6 +212,45 @@ class Articles {
       });
   }
 
+  favorite(args, req) {
+    return Promise.all([
+      this.getArticle(args),
+      User.findById(req.payload.id)
+    ]).then(function(results) {
+      let article = results[0];
+      let user = results[1];
+
+      if (!user) {
+        throw new Error('No user entry found');
+      }
+
+      return user.favorite(article._id).then(function(){
+        return article.updateFavoriteCount().then(function(article){
+          return article;
+        });
+      });
+    })
+  }
+
+  unfavorite(args, req) {
+    return Promise.all([
+      this.getArticle(args),
+      User.findById(req.payload.id)
+    ]).then(function (results){
+      let article = results[0];
+      let user = results[1];
+
+      if (!user) {
+        throw new Error('No user entry found');
+      }
+
+      return user.unfavorite(article._id).then(function(){
+        return article.updateFavoriteCount().then(function(article){
+          return article;
+        });
+      });
+    })
+  }
 };
 
 export default Articles;
