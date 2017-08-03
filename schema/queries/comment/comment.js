@@ -5,7 +5,7 @@ import {
 } from 'graphql';
 
 import commentType from '../../types/comment';
-import Db from '../../../database/comments';
+import CommentRepo from '../../../database/comments';
 
 export default {
   type: commentType,
@@ -16,6 +16,7 @@ export default {
     }
   },
   resolve: (obj, args) => {
-      return Db().getById(args);
+    let commentRepo = new CommentRepo();
+    return commentRepo.getComment(args);
   }
 };

@@ -4,7 +4,7 @@ var User = mongoose.model('User');
 
 let instance = null;
 
-class Articles {
+class ArticleRepository {
   constructor() {
     if (!instance) {
       instance = this;
@@ -12,6 +12,20 @@ class Articles {
     this.time = new Date();
 
     return instance;
+  }
+
+  getById(id) {
+    console.log('test');
+    return Article.findOne({
+        _id: id
+      })
+      .populate('author')
+      .then(function(article) {
+        if (!article) {
+          throw new Error('Article can\'t be found');
+        }
+        return article;
+      });
   }
 
   getByUser(req) {
@@ -224,8 +238,8 @@ class Articles {
         throw new Error('No user entry found');
       }
 
-      return user.favorite(article._id).then(function(){
-        return article.updateFavoriteCount().then(function(article){
+      return user.favorite(article._id).then(function() {
+        return article.updateFavoriteCount().then(function(article) {
           return article;
         });
       });
@@ -236,7 +250,7 @@ class Articles {
     return Promise.all([
       this.getArticle(args),
       User.findById(req.payload.id)
-    ]).then(function (results){
+    ]).then(function(results) {
       let article = results[0];
       let user = results[1];
 
@@ -244,8 +258,8 @@ class Articles {
         throw new Error('No user entry found');
       }
 
-      return user.unfavorite(article._id).then(function(){
-        return article.updateFavoriteCount().then(function(article){
+      return user.unfavorite(article._id).then(function() {
+        return article.updateFavoriteCount().then(function(article) {
           return article;
         });
       });
@@ -253,4 +267,4 @@ class Articles {
   }
 };
 
-export default Articles;
+export default ArticleRepository;

@@ -11,8 +11,7 @@ const {
 import queries from './queries';
 import mutations from './mutations';
 
-// The root query type is where in the data graph
-// we can start asking questions
+// Starting points of our data graph
 const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
   description: 'This is the root query',

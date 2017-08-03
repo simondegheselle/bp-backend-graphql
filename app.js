@@ -52,11 +52,12 @@ const graphqlHTTP = require('express-graphql');
 
 const auth = require('./auth');
 
-app.use('/graphql', auth.required);
+app.use('/graphql', auth.optional);
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   pretty: true,
+  graphiql: true,
 }));
 
 const PORT = process.env.PORT || 3001;
