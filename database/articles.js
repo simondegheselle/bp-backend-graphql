@@ -167,7 +167,7 @@ class ArticleRepository {
         throw new Error('Article could not be added');
       }
 
-      return true;
+      return newArticle;
     });
   }
 

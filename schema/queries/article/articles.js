@@ -8,7 +8,7 @@ import {
 } from 'graphql';
 
 import ArticleType from '../../types/article';
-import Db from '../../../database/articles';
+import ArticleRepo from '../../../database/articles';
 
 export default {
   type: new GraphQLList(ArticleType),
@@ -18,7 +18,8 @@ export default {
     limit: { type: GraphQLInt },
     offset: {type: GraphQLInt },
   },
-  resolve: (obj, args) => {
-    return Db().getByUser(args);
+  resolve: (obj, args, req) => {
+    let articleRepo = new ArticleRepo();
+    return articleRepo.getByUser(args);
   }
 };

@@ -20,6 +20,6 @@ module.exports = new GraphQLObjectType({
     author: { type: UserType },
     createdAt: { type: new GraphQLNonNull(GraphQLString) },
     updatedAt: { type: new GraphQLNonNull(GraphQLString) },
-    favoritesCount: { type: GraphQLInt }
+    favoritesCount: { type: GraphQLInt },
   }
 });

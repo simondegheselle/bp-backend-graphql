@@ -5,9 +5,10 @@ import {
 
 import articleInputType from '../../types/article-input';
 import ArticleRepo from '../../../database/articles';
+import ArticleType from '../../types/article';
 
 export default {
-  type: GraphQLBoolean,
+  type: ArticleType,
   args: {
     data: {
       type: new GraphQLNonNull(articleInputType),
