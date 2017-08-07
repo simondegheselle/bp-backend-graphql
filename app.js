@@ -1,3 +1,5 @@
+require("babel-register");
+
 var http = require('http'),
     path = require('path'),
     methods = require('methods'),
@@ -8,9 +10,6 @@ var http = require('http'),
     passport = require('passport'),
     errorhandler = require('errorhandler'),
     mongoose = require('mongoose');
-
-require("babel-register");
-
 
 var isProduction = process.env.NODE_ENV === 'production';
 
