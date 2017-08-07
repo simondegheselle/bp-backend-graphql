@@ -51,7 +51,7 @@ const graphqlHTTP = require('express-graphql');
 
 const auth = require('./auth');
 
-app.use('/graphql', auth.optional);
+app.use('/graphql', auth);
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
