@@ -136,7 +136,7 @@ class ArticleRepository {
   }
 
   create(args, req) {
-    console.log(req);
+    console.log(req.payload);
     return User.findById(req.payload.id).then(function(user) {
       const article = new Article();
 
