@@ -32,7 +32,9 @@ if (!isProduction) {
   app.use(errorhandler());
 }
 
-var mongoURI = isProduction? process.env.MONGODB_URI : 'mongodb://localhost/conduit';
+//var mongoURI = isProduction? process.env.MONGODB_URI : 'mongodb://db:27017/conduit';
+var mongoURI = 'mongodb://simondegheselle:graphql-falcor@ds121212.mlab.com:21212/graphql-falcor'
+// var mongoURI = 'mongodb://db:27017/conduit'
 var MongoDB = mongoose.connect(mongoURI).connection;
 console.log(mongoURI);
 
@@ -59,8 +61,12 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
-const PORT = process.env.PORT || 3001;
-
-app.listen(PORT, () => {
-  console.log(`GraphQL server is listening on port ${PORT}`);
+app.get('/', (req, res) => {
+  res.send('Hello world\n');
 });
+
+const PORT = process.env.PORT || 3001;
+const HOST = '0.0.0.0';
+
+app.listen(PORT, HOST);
+console.log(`GraphQL server is listening on port ${PORT}`);
