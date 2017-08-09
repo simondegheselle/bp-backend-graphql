@@ -9,7 +9,8 @@ var http = require('http'),
     cors = require('cors'),
     passport = require('passport'),
     errorhandler = require('errorhandler'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    responseTime = require('response-time');
 
 var isProduction = process.env.NODE_ENV === 'production';
 
@@ -52,6 +53,8 @@ const schema = require('./schema');
 const graphqlHTTP = require('express-graphql');
 
 const auth = require('./auth');
+
+app.use(responseTime())
 
 app.use('/graphql', auth);
 
