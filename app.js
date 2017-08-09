@@ -61,10 +61,6 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
-app.get('/', (req, res) => {
-  res.send('Hello world\n');
-});
-
 const PORT = process.env.PORT || 3001;
 const HOST = '0.0.0.0';
 
