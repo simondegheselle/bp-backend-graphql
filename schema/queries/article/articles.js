@@ -14,12 +14,14 @@ export default {
   type: new GraphQLList(ArticleType),
   description: 'Returns all articles of a user',
   args: {
-    username: { type: new GraphQLNonNull(GraphQLString)},
     limit: { type: GraphQLInt },
     offset: {type: GraphQLInt },
+    tag: { type: new GraphQLList(GraphQLString) },
+    author: { type: GraphQLString },
+    favoriter: { type: GraphQLString }
   },
   resolve: (obj, args, req) => {
     let articleRepo = new ArticleRepo();
-    return articleRepo.getByUser(args);
+    return articleRepo.getAll(args, req);
   }
 };

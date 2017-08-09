@@ -28,42 +28,41 @@ class ArticleRepository {
       });
   }
 
-  getByUser(req) {
+  getAll(args, req) {
     var query = {};
     var limit = 20;
     var offset = 0;
 
-    if (typeof req.limit !== 'undefined') {
-      limit = req.limit;
+    if (typeof args.limit !== 'undefined') {
+      limit = args.limit;
     }
 
-    if (typeof req.offset !== 'undefined') {
-      offset = req.offset;
+    if (typeof args.offset !== 'undefined') {
+      offset = args.offset;
     }
 
-    if (typeof req.tag !== 'undefined') {
+    if (typeof args.tag !== 'undefined') {
       query.tagList = {
-        "$in": [req.tag]
+        "$in": [args.tag]
       };
     }
 
     return Promise.all([
-      req.username ? User.findOne({
-        username: req.username
-      }) : null,
+      args.author ? User.findOne({username: args.author}) : null,
+      args.favorited ? User.findOne({username: args.favorited}) : null,
     ]).then(function(results) {
       var author = results[0];
-      //var favoriter = results[1];
+      var favoriter = results[1];
 
       if (author) {
         query.author = author._id;
       }
 
-      /*if(favoriter){
+      if(favoriter){
         query._id = {$in: favoriter.favorites};
-      } else if(req.favorited){
+      } else if(args.favorited){
         query._id = {$in: []};
-      } */
+      }
 
       return Promise.all([
         Article.find(query)
@@ -78,61 +77,10 @@ class ArticleRepository {
       ]).then(function(results) {
         var articles = results[0];
         var user = results[1];
-        articles = articles.map(function(article) {
-          return article.toJSONFor(user);
-        });
+
         return articles;
       });
     })
-  }
-
-  getFeed(req) {
-    var limit = 20;
-    var offset = 0;
-
-
-    if (typeof req.limit !== 'undefined') {
-      limit = req.limit;
-    }
-
-    if (typeof req.offset !== 'undefined') {
-      offset = req.offset;
-    }
-
-    return User.findOne({
-      username: req.username
-    }).then(function(user) {
-      if (!user) {
-        return new Error(JSON.stringify({
-          code: 409,
-          message: "No user entry found for username"
-        }))
-      }
-      return Promise.all([
-        Article.find({
-          author: {
-            $in: user.following
-          }
-        })
-        .limit(Number(limit))
-        .skip(Number(offset))
-        .populate('author')
-        .exec(),
-        Article.count({
-          author: {
-            $in: user.following
-          }
-        })
-      ]).then(function(results) {
-        var articles = results[0];
-        var articlesCount = results[1];
-
-        return articles.map(function(article) {
-          return article.toJSONFor(user);
-        });
-
-      }).catch(mes => console.log(mes));
-    }).catch(mes => console.log(mes));
   }
 
   create(args, req) {
