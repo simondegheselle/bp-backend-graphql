@@ -7,6 +7,7 @@ const {
 } = require('graphql');
 
 const UserType = require('./user');
+const CommentType = require('./comment');
 
 module.exports = new GraphQLObjectType({
   name: 'ArticleType',
@@ -20,6 +21,7 @@ module.exports = new GraphQLObjectType({
     author: { type: UserType },
     createdAt: { type: new GraphQLNonNull(GraphQLString) },
     updatedAt: { type: new GraphQLNonNull(GraphQLString) },
+    comments: { type: new GraphQLList(CommentType) },
     favoritesCount: { type: GraphQLInt },
   }
 });

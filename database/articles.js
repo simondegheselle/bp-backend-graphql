@@ -20,6 +20,7 @@ class ArticleRepository {
         _id: id
       })
       .populate('author')
+      .populate('comments')
       .then(function(article) {
         if (!article) {
           throw new Error('Article can\'t be found');
@@ -71,7 +72,7 @@ class ArticleRepository {
         .sort({
           createdAt: 'desc'
         })
-        .populate('author')
+        .populate('author').populate('comments')
         .exec(),
         req.payload ? User.findById(req.payload.id) : null,
       ]).then(function(results) {
@@ -167,6 +168,7 @@ class ArticleRepository {
         slug: args.slug
       })
       .populate('author')
+      .populate('comments')
       .then(function(article) {
         if (!article) {
           throw new Error('Article can\'t be found');
