@@ -1,0 +1,286 @@
+{
+	"variables": [],
+	"info": {
+		"name": "grapqhl backend",
+		"_postman_id": "79dc8792-7991-66f7-9457-573030b68cd0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "delete article",
+			"request": {
+				"url": "http://localhost:3001/graphql",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5OTE4YmNjNWE5YmNhMTAwMGZmNDY3ZSIsInVzZXJuYW1lIjoiY2VkcmljdmFuaGF2ZXJiZWtlIiwiZXhwIjoxNTA4MTQzNTEwLCJpYXQiOjE1MDI5NTk1MTB9.7AZDdX_pnM8GREsshk7i1_Q_2dirZf6DKZmCO_GnYO8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": \"mutation { deleteArticle(slug: \\\"graphql-vs-rest-new\\\") }\",\n\t\"variables\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create article",
+			"request": {
+				"url": "http://localhost:3001/graphql",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5OTE4YmNjNWE5YmNhMTAwMGZmNDY3ZSIsInVzZXJuYW1lIjoiY2VkcmljdmFuaGF2ZXJiZWtlIiwiZXhwIjoxNTA4MTQzNTEwLCJpYXQiOjE1MDI5NTk1MTB9.7AZDdX_pnM8GREsshk7i1_Q_2dirZf6DKZmCO_GnYO8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\":\"mutation { createArticle(data: {title: \\\"graphql-vs-rest-new\\\", body: \\\"Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.\\\"}) { title } }\",\n\t\"variables\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "favorite article",
+			"request": {
+				"url": "http://localhost:3001/graphql",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5OTE4YmNjNWE5YmNhMTAwMGZmNDY3ZSIsInVzZXJuYW1lIjoiY2VkcmljdmFuaGF2ZXJiZWtlIiwiZXhwIjoxNTA4MTQzNTEwLCJpYXQiOjE1MDI5NTk1MTB9.7AZDdX_pnM8GREsshk7i1_Q_2dirZf6DKZmCO_GnYO8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": \"mutation { favoriteArticle(slug: \\\"graphql-vs-rest-new\\\") { title favoritesCount } }\",\n\t\"variables\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "unfavorite article",
+			"request": {
+				"url": "http://localhost:3001/graphql",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5OTE4YmNjNWE5YmNhMTAwMGZmNDY3ZSIsInVzZXJuYW1lIjoiY2VkcmljdmFuaGF2ZXJiZWtlIiwiZXhwIjoxNTA4MTQzNTEwLCJpYXQiOjE1MDI5NTk1MTB9.7AZDdX_pnM8GREsshk7i1_Q_2dirZf6DKZmCO_GnYO8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": \"mutation { unfavoriteArticle(slug: \\\"graphql-vs-rest-new\\\") { title favoritesCount } }\",\n\t\"variables\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create comment",
+			"request": {
+				"url": "http://localhost:3001/graphql",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5OTE4YmNjNWE5YmNhMTAwMGZmNDY3ZSIsInVzZXJuYW1lIjoiY2VkcmljdmFuaGF2ZXJiZWtlIiwiZXhwIjoxNTA4MTQzNTEwLCJpYXQiOjE1MDI5NTk1MTB9.7AZDdX_pnM8GREsshk7i1_Q_2dirZf6DKZmCO_GnYO8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": \"mutation { createComment(data: {slug: \\\"graphql-vs-rest\\\", body: \\\"test comment\\\"})  }\",\n\t\"variables\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete comment",
+			"request": {
+				"url": "http://localhost:3001/graphql",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5OTE4YmNjNWE5YmNhMTAwMGZmNDY3ZSIsInVzZXJuYW1lIjoiY2VkcmljdmFuaGF2ZXJiZWtlIiwiZXhwIjoxNTA4MTQzNTEwLCJpYXQiOjE1MDI5NTk1MTB9.7AZDdX_pnM8GREsshk7i1_Q_2dirZf6DKZmCO_GnYO8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": \"mutation { deleteComment( id: \\\"5982f875c2d81c7f336af35b\\\" )  }\",\n\t\"variables\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all tags",
+			"request": {
+				"url": "http://localhost:3001/graphql",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5OTE4YmNjNWE5YmNhMTAwMGZmNDY3ZSIsInVzZXJuYW1lIjoiY2VkcmljdmFuaGF2ZXJiZWtlIiwiZXhwIjoxNTA4MTQzNTEwLCJpYXQiOjE1MDI5NTk1MTB9.7AZDdX_pnM8GREsshk7i1_Q_2dirZf6DKZmCO_GnYO8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": \"query { tags }\",\n\t\"variables\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "query single blog",
+			"request": {
+				"url": "http://localhost:3001/graphql",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5OTE4YmNjNWE5YmNhMTAwMGZmNDY3ZSIsInVzZXJuYW1lIjoiY2VkcmljdmFuaGF2ZXJiZWtlIiwiZXhwIjoxNTA4MTQzNTEwLCJpYXQiOjE1MDI5NTk1MTB9.7AZDdX_pnM8GREsshk7i1_Q_2dirZf6DKZmCO_GnYO8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": \"query { article(slug: \\\"graphql-vs-rest\\\") { description body author { username } } }\",\n\t\"variables\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all articles",
+			"request": {
+				"url": "http://localhost:3001/graphql",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5OTE4YmNjNWE5YmNhMTAwMGZmNDY3ZSIsInVzZXJuYW1lIjoiY2VkcmljdmFuaGF2ZXJiZWtlIiwiZXhwIjoxNTA4MTQzNTEwLCJpYXQiOjE1MDI5NTk1MTB9.7AZDdX_pnM8GREsshk7i1_Q_2dirZf6DKZmCO_GnYO8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": \"query { articles { title description } }\",\n\t\"variables\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all articles get title",
+			"request": {
+				"url": "http://localhost:3001/graphql",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5OTE4YmNjNWE5YmNhMTAwMGZmNDY3ZSIsInVzZXJuYW1lIjoiY2VkcmljdmFuaGF2ZXJiZWtlIiwiZXhwIjoxNTA4MTQzNTEwLCJpYXQiOjE1MDI5NTk1MTB9.7AZDdX_pnM8GREsshk7i1_Q_2dirZf6DKZmCO_GnYO8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": \"query { articles { title }}\",\n\t\"variables\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "query single blog + it's comments",
+			"request": {
+				"url": "https://bp-backend-graphql.herokuapp.com/graphql",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5OTE4YmNjNWE5YmNhMTAwMGZmNDY3ZSIsInVzZXJuYW1lIjoiY2VkcmljdmFuaGF2ZXJiZWtlIiwiZXhwIjoxNTA4MTQzNTEwLCJpYXQiOjE1MDI5NTk1MTB9.7AZDdX_pnM8GREsshk7i1_Q_2dirZf6DKZmCO_GnYO8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": \"query { article(slug: \\\"graphql-vs-rest\\\") { title description body comments { body createdAt } author { username } createdAt } }\",\n\t\"variables\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
