@@ -37,3 +37,11 @@ node_modules
 .idea
 
 node_modules/
+
+backend-graphQL.aux
+backend-graphQL.pdf
+backend-graphQL.synctex.gz
+backend-graphQL.tex
+code2tex.py
+commando.txt
+convert_all.py
