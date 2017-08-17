@@ -16,6 +16,9 @@ To get the Node server running locally:
 
 `schema/` - This folder contains the graphQL schema definitions.
 
+`services/` - This folder contains services that execute database logic
+
+
 ## Postman
 
 A postman collection, containing all the possible requests, is included in this project.
