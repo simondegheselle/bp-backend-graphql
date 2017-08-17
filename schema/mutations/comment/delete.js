@@ -4,7 +4,7 @@ import {
   GraphQLBoolean,
 } from 'graphql';
 
-import CommentRepo from '../../../database/comments';
+import CommentService from '../../../services/comments';
 
 export default {
   type: GraphQLBoolean,
@@ -12,7 +12,7 @@ export default {
     id: { type: new GraphQLNonNull(GraphQLID)},
   },
   async resolve (obj, args, req) {
-    let commentRepo = new CommentRepo();
-    return commentRepo.delete(args, req);
+    let commentService = new CommentService();
+    return commentService.delete(args, req);
   }
 };

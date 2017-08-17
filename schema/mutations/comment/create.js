@@ -4,7 +4,7 @@ import {
 } from 'graphql';
 
 import commentInputType from '../../types/comment-input';
-import CommentRepo from '../../../database/comments';
+import CommentService from '../../../services/comments';
 
 export default {
   type: GraphQLBoolean,
@@ -15,7 +15,7 @@ export default {
     }
   },
   async resolve (obj, args, req) {
-    let commentRepo = new CommentRepo();
-    return commentRepo.create(args, req);
+    let commentService = new CommentService();
+    return commentService.create(args, req);
   }
 };

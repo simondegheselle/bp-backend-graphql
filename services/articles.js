@@ -4,7 +4,7 @@ var User = mongoose.model('User');
 
 let instance = null;
 
-class ArticleRepository {
+class ArticleService {
   constructor() {
     if (!instance) {
       instance = this;
@@ -218,4 +218,4 @@ class ArticleRepository {
   }
 };
 
-export default ArticleRepository;
+export default ArticleService;

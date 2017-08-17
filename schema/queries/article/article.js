@@ -7,7 +7,7 @@ import {
 } from 'graphql';
 
 import ArticleType from '../../types/article';
-import ArticleRepo from '../../../database/articles';
+import ArticleService from '../../../services/articles';
 
 export default {
   type: ArticleType,
@@ -16,7 +16,7 @@ export default {
     slug: { type: new GraphQLNonNull(GraphQLString)},
   },
   resolve: (obj, args, req) => {
-    let articleRepo = new ArticleRepo();
-    return articleRepo.getArticle(args);
+    let articleService = new ArticleService();
+    return articleService.getArticle(args);
   }
 };

@@ -2,17 +2,17 @@ const mongoose = require('mongoose');
 const Article = mongoose.model('Article');
 const Comment = mongoose.model('Comment');
 const User = mongoose.model('User');
-import ArticleRepo from './articles';
+import ArticleService from './articles';
 
 let instance = null;
 
-class CommentRepository {
+class CommentService {
   constructor() {
     if (!instance) {
       instance = this;
     }
     this.time = new Date();
-    this.articleRepo = new ArticleRepo();
+    this.articleService = new ArticleService();
 
     return instance;
   }
@@ -28,7 +28,7 @@ class CommentRepository {
 
   create(args, req) {
     return Promise.all([
-      this.articleRepo.getArticle(args.data),
+      this.articleService.getArticle(args.data),
       User.findById(req.payload.id)
     ]).then(function(results){
       let article = results[0];
@@ -56,7 +56,7 @@ class CommentRepository {
     this.getComment(args).then(function(comment) {
       if(comment.author.toString() === req.payload.id.toString()){
         let articleId = comment.article;
-        return instance.articleRepo.getById(articleId).then(function(article) {
+        return instance.articleService.getById(articleId).then(function(article) {
           article.comments.remove(comment._id);
           article.save()
             .then(Comment.find({_id: comment._id}).remove().exec())
@@ -71,7 +71,7 @@ class CommentRepository {
   }
 
   getAll(args, req) {
-    return this.articleRepo.getArticle(args).then(function(article) {
+    return this.articleService.getArticle(args).then(function(article) {
       return Comment.find({ article: article._id }).populate('author').then(function(comments) {
         return comments;
       });
@@ -79,4 +79,4 @@ class CommentRepository {
   }
 };
 
-export default CommentRepository;
+export default CommentService;

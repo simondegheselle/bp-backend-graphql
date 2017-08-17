@@ -5,7 +5,7 @@ import {
 } from 'graphql';
 
 import articleInputType from '../../types/article-input';
-import ArticleRepo from '../../../database/articles';
+import ArticleService from '../../../services/articles';
 import ArticleType from '../../types/article';
 
 export default {
@@ -14,7 +14,7 @@ export default {
     slug: { type: new GraphQLNonNull(GraphQLString)},
   },
   async resolve (obj, args, req) {
-    let articleRepo = new ArticleRepo();
-    return articleRepo.unfavorite(args, req);
+    let articleService = new ArticleService();
+    return articleService.unfavorite(args, req);
   }
 };

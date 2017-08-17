@@ -4,14 +4,14 @@ import {
   GraphQLString,
 } from 'graphql';
 
-import TagRepo from '../../../database/tags';
+import TagService from '../../../services/tags';
 
 export default {
   type: new GraphQLList(GraphQLString),
   description: 'Returns all tags',
   args: {},
   resolve: (obj, args) => {
-    let tagRepo = new TagRepo();
-    return tagRepo.getAll();
+    let tagService = new TagService();
+    return tagService.getAll();
   }
 };

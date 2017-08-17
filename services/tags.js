@@ -3,7 +3,7 @@ var Article = mongoose.model('Article');
 
 let instance = null;
 
-class TagRepository {
+class TagService {
   constructor() {
     if (!instance) {
       instance = this;
@@ -18,4 +18,4 @@ class TagRepository {
   }
 }
 
-export default TagRepository;
+export default TagService;

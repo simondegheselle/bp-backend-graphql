@@ -4,7 +4,7 @@ import {
 } from 'graphql';
 
 import articleInputType from '../../types/article-input';
-import ArticleRepo from '../../../database/articles';
+import ArticleService from '../../../services/articles';
 import ArticleType from '../../types/article';
 
 export default {
@@ -16,7 +16,7 @@ export default {
     }
   },
   async resolve (obj, args, req) {
-    let articleRepo = new ArticleRepo();
-    return articleRepo.create(args, req);
+    let articleService = new ArticleService();
+    return articleService.create(args, req);
   }
 };

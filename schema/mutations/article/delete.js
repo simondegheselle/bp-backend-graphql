@@ -5,7 +5,7 @@ import {
 } from 'graphql';
 
 import articleInputType from '../../types/article-input';
-import ArticleRepo from '../../../database/articles';
+import ArticleService from '../../../services/articles';
 
 export default {
   type: GraphQLBoolean,
@@ -13,7 +13,7 @@ export default {
     slug: { type: new GraphQLNonNull(GraphQLString)},
   },
   async resolve (obj, args, req) {
-    let articleRepo = new ArticleRepo();
-    return articleRepo.delete(args, req);
+    let articleService = new ArticleService();
+    return articleService.delete(args, req);
   }
 };

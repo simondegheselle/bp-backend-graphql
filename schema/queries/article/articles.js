@@ -8,7 +8,7 @@ import {
 } from 'graphql';
 
 import ArticleType from '../../types/article';
-import ArticleRepo from '../../../database/articles';
+import ArticleService from '../../../services/articles';
 
 export default {
   type: new GraphQLList(ArticleType),
@@ -21,7 +21,7 @@ export default {
     favoriter: { type: GraphQLString }
   },
   resolve: (obj, args, req) => {
-    let articleRepo = new ArticleRepo();
-    return articleRepo.getAll(args, req);
+    let articleService = new ArticleService();
+    return articleService.getAll(args, req);
   }
 };

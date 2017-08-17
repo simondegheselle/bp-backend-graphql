@@ -5,7 +5,7 @@ import {
 } from 'graphql';
 
 import articleInputType from '../../types/article-input';
-import ArticleRepo from '../../../database/articles';
+import ArticleService from '../../../services/articles';
 
 export default {
   type: GraphQLBoolean,
@@ -17,7 +17,7 @@ export default {
     },
   },
   async resolve (obj, args, req) {
-    let articleRepo = new ArticleRepo();
-    return articleRepo.update(args, req);
+    let articleService = new ArticleService();
+    return articleService.update(args, req);
   }
 };
