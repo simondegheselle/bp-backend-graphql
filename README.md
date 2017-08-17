@@ -15,3 +15,7 @@ To get the Node server running locally:
 `models/` - This folder contains the schema definitions for our Mongoose models.
 
 `schema/` - This folder contains the graphQL schema definitions.
+
+## Postman
+
+A postman collection, containing all the possible requests, is included in this project.
