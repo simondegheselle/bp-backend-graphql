@@ -2,10 +2,6 @@
 const {
   GraphQLSchema,
   GraphQLObjectType,
-  GraphQLString,
-  GraphQLNonNull,
-  GraphQLList,
-  GraphQLInt,
 } = require('graphql');
 
 import queries from './queries';

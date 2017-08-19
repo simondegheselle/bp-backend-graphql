@@ -12,9 +12,19 @@ var http = require('http'),
     mongoose = require('mongoose'),
     responseTime = require('response-time');
 
+require('./models/User');
+require('./models/Article');
+require('./models/Comment');
+require('./config/passport');
+
+const schema = require('./schema');
+const graphqlHTTP = require('express-graphql');
+
+const auth = require('./auth');
+
 var isProduction = process.env.NODE_ENV === 'production';
 
-// Create global app object
+// Create express server
 var app = express();
 
 app.use(cors());
@@ -44,26 +54,9 @@ MongoDB.once('open', function() {
   console.log("mongodb connection open");
 });
 
-require('./models/User');
-require('./models/Article');
-require('./models/Comment');
-require('./config/passport');
-
-const schema = require('./schema');
-const graphqlHTTP = require('express-graphql');
-
-const auth = require('./auth');
-
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use('/graphql', auth);
 
 app.use(responseTime());
-
-app.use('/graphql', auth);
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
@@ -72,7 +65,7 @@ app.use('/graphql', graphqlHTTP({
 }));
 
 const PORT = process.env.PORT || 3001;
-const HOST = '0.0.0.0';
 
-app.listen(PORT, HOST);
-console.log(`GraphQL server is listening on port ${PORT}`);
+app.listen(PORT, () => {
+	console.log(`GraphQL server is listening on port ${PORT}`);
+});

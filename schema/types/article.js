@@ -19,9 +19,9 @@ module.exports = new GraphQLObjectType({
     body: { type: GraphQLString },
     tagList: { type: new GraphQLList(GraphQLString)},
     author: { type: UserType },
-    createdAt: { type: new GraphQLNonNull(GraphQLString) },
-    updatedAt: { type: new GraphQLNonNull(GraphQLString) },
     comments: { type: new GraphQLList(CommentType) },
+    createdAt: { type: new GraphQLNonNull(GraphQLString) },
+    updatedAt: { type: new GraphQLNonNull(GraphQLString) },    
     favoritesCount: { type: GraphQLInt },
   }
 });

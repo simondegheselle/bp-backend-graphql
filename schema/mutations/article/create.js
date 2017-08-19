@@ -1,6 +1,5 @@
 import {
-  GraphQLNonNull,
-  GraphQLBoolean
+  GraphQLNonNull
 } from 'graphql';
 
 import articleInputType from '../../types/article-input';
@@ -9,6 +8,7 @@ import ArticleType from '../../types/article';
 
 export default {
   type: ArticleType,
+  description: "Creates a new article",
   args: {
     data: {
       type: new GraphQLNonNull(articleInputType),
