@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Article = mongoose.model('Article');
 const Comment = mongoose.model('Comment');
 const User = mongoose.model('User');
-import ArticleService from './articles';
+const ArticleService = require('./articles');
 
 let instance = null;
 
@@ -79,4 +79,4 @@ class CommentService {
   }
 };
 
-export default CommentService;
+module.exports = CommentService;

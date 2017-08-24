@@ -15,7 +15,6 @@ class ArticleService {
   }
 
   getById(id) {
-    console.log('test');
     return Article.findOne({
         _id: id
       })
@@ -85,7 +84,6 @@ class ArticleService {
   }
 
   create(args, req) {
-    console.log(req.payload);
     return User.findById(req.payload.id).then(function(user) {
       const article = new Article();
 
@@ -121,27 +119,27 @@ class ArticleService {
     });
   }
 
-  update(req) {
-    let article = this.getArticle();
+  update(args, req) {
+    return this.getArticle(args).then(function(article) {
+      if (typeof args.data.title !== 'undefined') {
+        article.title = args.data.title;
+      }
 
-    if (typeof req.title !== 'undefined') {
-      article.title = req.body.article.title;
-    }
+      if (typeof args.data.description !== 'undefined') {
+        article.description = args.data.description;
+      }
 
-    if (typeof req.description !== 'undefined') {
-      article.description = req.body.article.description;
-    }
+      if (typeof args.data.body !== 'undefined') {
+        article.body = args.data.body;
+      }
 
-    if (typeof req.body.article.body !== 'undefined') {
-      article.body = req.body.article.body;
-    }
+      if (typeof args.data.tagList !== 'undefined') {
+        article.tagList = args.data.tagList
+      }
 
-    if (typeof req.body.article.tagList !== 'undefined') {
-      article.tagList = req.body.article.tagList
-    }
-
-    return article.save().then(function(article) {
-      return article;
+      return article.save().then(function(article) {
+        return article;
+      });
     });
   }
 
@@ -218,4 +216,4 @@ class ArticleService {
   }
 };
 
-export default ArticleService;
+module.exports = ArticleService;

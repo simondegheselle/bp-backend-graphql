@@ -1,5 +1,3 @@
-require("babel-register");
-
 var http = require('http'),
     path = require('path'),
     methods = require('methods'),
@@ -10,17 +8,15 @@ var http = require('http'),
     passport = require('passport'),
     errorhandler = require('errorhandler'),
     mongoose = require('mongoose'),
-    responseTime = require('response-time');
+    responseTime = require('response-time'),
+    auth = require('./auth'),
+    graphqlHTTP = require('express-graphql');
 
 require('./models/User');
 require('./models/Article');
 require('./models/Comment');
 require('./config/passport');
-
 const schema = require('./schema');
-const graphqlHTTP = require('express-graphql');
-
-const auth = require('./auth');
 
 var isProduction = process.env.NODE_ENV === 'production';
 
@@ -43,9 +39,7 @@ if (!isProduction) {
   app.use(errorhandler());
 }
 
-//var mongoURI = isProduction? process.env.MONGODB_URI : 'mongodb://db:27017/conduit';
 var mongoURI = 'mongodb://simondegheselle:graphql-falcor@ds121212.mlab.com:21212/graphql-falcor'
-// var mongoURI = 'mongodb://db:27017/conduit'
 var MongoDB = mongoose.connect(mongoURI).connection;
 console.log(mongoURI);
 

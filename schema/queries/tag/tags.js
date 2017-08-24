@@ -1,12 +1,12 @@
 // Import type helpers from graphql-js
-import {
+const {
   GraphQLList,
   GraphQLString,
-} from 'graphql';
+} = require('graphql');
 
-import TagService from '../../../services/tags';
+const TagService = require('../../../services/tags');
 
-export default {
+module.exports = {
   type: new GraphQLList(GraphQLString),
   description: 'Returns all tags',
   args: {},

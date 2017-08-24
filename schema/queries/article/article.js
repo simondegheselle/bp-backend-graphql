@@ -1,15 +1,15 @@
 // Import type helpers from graphql-js
-import {
+const {
   GraphQLSchema,
   GraphQLNonNull,
   GraphQLInt,
   GraphQLString,
-} from 'graphql';
+} = require('graphql');
 
-import ArticleType from '../../types/article';
-import ArticleService from '../../../services/articles';
+const ArticleType = require('../../types/article');
+const ArticleService = require('../../../services/articles');
 
-export default {
+module.exports = {
   type: ArticleType,
   description: 'Returns a single article',
   args: {

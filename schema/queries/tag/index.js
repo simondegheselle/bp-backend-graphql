@@ -1,5 +1,5 @@
-import tags from './tags';
+const tags = require('./tags');
 
-export default {
+module.exports = {
   tags,
 };

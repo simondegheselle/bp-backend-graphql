@@ -1,8 +1,8 @@
-import article from './article';
-import comment from './comment';
-import tag from './tag';
+const article = require('./article');
+const comment = require('./comment');
+const tag = require('./tag');
 
-export default {
+module.exports = {
   ...article,
   ...comment,
   ...tag,

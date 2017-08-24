@@ -1,10 +1,10 @@
-import {
+const {
   GraphQLInputObjectType,
   GraphQLString,
   GraphQLNonNull,
-} from 'graphql';
+} = require('graphql');
 
-export default new GraphQLInputObjectType({
+module.exports = new GraphQLInputObjectType({
   name: 'CommentInput',
   fields: {
     slug: { type: new GraphQLNonNull(GraphQLString) },

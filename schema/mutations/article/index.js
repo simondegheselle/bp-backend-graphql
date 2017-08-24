@@ -1,10 +1,10 @@
-import createArticle from './create';
-import updateArticle from './update';
-import deleteArticle from './delete';
-import favoriteArticle from './favorite';
-import unfavoriteArticle from './unfavorite';
+const createArticle = require('./create');
+const updateArticle = require('./update');
+const deleteArticle = require('./delete');
+const favoriteArticle = require('./favorite');
+const unfavoriteArticle = require('./unfavorite');
 
-export default {
+module.exports = {
   createArticle,
   updateArticle,
   deleteArticle,

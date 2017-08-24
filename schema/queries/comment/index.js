@@ -1,5 +1,5 @@
-import comment from './comment';
+const comment = require('./comment');
 
-export default {
+module.exports = {
   comment,
 };

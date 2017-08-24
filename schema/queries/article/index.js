@@ -1,7 +1,7 @@
-import articles from './articles';
-import article from './article';
+const articles = require('./articles');
+const article = require('./article');
 
-export default {
+module.exports = {
   articles,
   article,
 };

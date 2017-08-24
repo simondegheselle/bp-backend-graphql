@@ -4,8 +4,8 @@ const {
   GraphQLObjectType,
 } = require('graphql');
 
-import queries from './queries';
-import mutations from './mutations';
+const queries =  require('./queries');
+const mutations = require('./mutations');
 
 // Starting points of our data graph
 const RootQueryType = new GraphQLObjectType({

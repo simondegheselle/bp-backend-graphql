@@ -1,13 +1,13 @@
-import {
+const {
   GraphQLList,
   GraphQLID,
   GraphQLNonNull
-} from 'graphql';
+} = require('graphql');
 
-import commentType from '../../types/comment';
-import CommentService from '../../../services/comments';
+const commentType = require('../../types/comment');
+const CommentService = require('../../../services/comments');
 
-export default {
+module.exports = {
   type: commentType,
   args: {
     id: {

@@ -1,14 +1,14 @@
-import {
+const {
   GraphQLNonNull,
   GraphQLBoolean,
   GraphQLString,
-} from 'graphql';
+} = require('graphql');
 
-import articleInputType from '../../types/article-input';
-import ArticleService from '../../../services/articles';
-import ArticleType from '../../types/article';
+const articleInputType = require('../../types/article-input');
+const ArticleService = require('../../../services/articles');
+const ArticleType = require('../../types/article');
 
-export default {
+module.exports = {
   type: ArticleType,
   args: {
     slug: { type: new GraphQLNonNull(GraphQLString)},

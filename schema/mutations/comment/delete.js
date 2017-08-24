@@ -1,12 +1,12 @@
-import {
+const {
   GraphQLNonNull,
   GraphQLID,
   GraphQLBoolean,
-} from 'graphql';
+} = require('graphql');
 
-import CommentService from '../../../services/comments';
+const CommentService = require('../../../services/comments');
 
-export default {
+module.exports = {
   type: GraphQLBoolean,
   args: {
     id: { type: new GraphQLNonNull(GraphQLID)},

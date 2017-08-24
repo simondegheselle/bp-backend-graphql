@@ -1,12 +1,12 @@
-import {
+const {
   GraphQLNonNull,
   GraphQLBoolean
-} from 'graphql';
+} = require('graphql');
 
-import commentInputType from '../../types/comment-input';
-import CommentService from '../../../services/comments';
+const commentInputType = require('../../types/comment-input');
+const CommentService = require('../../../services/comments');
 
-export default {
+module.exports = {
   type: GraphQLBoolean,
   args: {
     data: {

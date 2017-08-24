@@ -18,4 +18,4 @@ class TagService {
   }
 }
 
-export default TagService;
+module.exports = TagService;
